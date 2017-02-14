@@ -3,12 +3,10 @@ import { Component, Actions } from 'jumpsuit'
 import logo from './logo.svg';
 import './App.css';
 import Item from './Item';
+import InputForm from './inputform'
 
+import  './root'
 export default Component( {
-  onSubmit(event){
-    event.preventDefault();
-    Actions.addToList(this.props.input)
-  },
   render() {
     var {list} = this.props;
     return (
@@ -17,18 +15,11 @@ export default Component( {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <form
-          onSubmit={this.onSubmit}
-        >
-        <input type='text'
-          value={this.props.input}
-          onChange={(event) => {Actions.setInputText(event.target.value)}}
-         />
-        </form>
+        <InputForm />
         <ul>
           {
             list.map((item, index) =>(
-              <Item item={item} key={index} />
+              <Item item={item} key={index} index={index} />
             ))
           }
         </ul>
@@ -37,7 +28,6 @@ export default Component( {
   }
 }, (state) => {
   return {
-    list: state.listState.list,
-    input: state.listState.textInput
+    list: state.listState.list
   }
 })
