@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, Actions } from 'jumpsuit'
+import { Component } from 'jumpsuit'
 import logo from './logo.svg';
 import './App.css';
 import Item from './Item';

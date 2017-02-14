@@ -7,7 +7,7 @@ export default Component({
             <li>{this.props.item.name}
                 <a
                 onClick={() => Actions.removeFromList(this.props.index)}
-                >- </a>
+                >  -</a>
             </li>
         )
     }
