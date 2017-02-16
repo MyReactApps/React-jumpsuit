@@ -12,8 +12,9 @@ const listState = State({
             list: newList
         }
     },
-    setInputText({list}, text){
+    setInputText({list, ...rest}, text){
         return {
+            ...rest,
             list,
             textInput: text
         }
