@@ -1,25 +1,20 @@
 import React from 'react';
 import { Component } from 'jumpsuit'
-import logo from './logo.svg';
-import './App.css';
 import Item from './Item';
-import InputForm from './inputform'
+import InputForm from './inputform';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import  './root'
 export default Component( {
   render() {
     var {list} = this.props;
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+      <div className="container">
         <InputForm />
-        <ul>
+        <ul className="list-group">
           {
             list.map((item, index) =>(
-              <Item item={item} key={index} index={index} />
+              <Item item={item} key={item.key} />
             ))
           }
         </ul>

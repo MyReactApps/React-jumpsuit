@@ -8,10 +8,14 @@ export default Component({
     },
     render(){
         return(
-            <form onSubmit={this.onSubmit}>
+            <form
+                className="form-group"
+                onSubmit={this.onSubmit}>
+                <label>Text</label>
                 <input type='text'
-                    value={this.props.input}
-                    onChange={(event) => {Actions.setInputText(event.target.value)}}
+                       className="form-control"
+                       value={this.props.input}
+                       onChange={(event) => {Actions.setInputText(event.target.value)}}
                     />
             </form>
             )}
