@@ -4,7 +4,8 @@ import { Component, Actions } from 'jumpsuit';
 export default Component({
     onSubmit(event){
         event.preventDefault();
-        Actions.addToList(this.props.input)
+        let ref = this.props.useGlobal ? "list" : "users/" + this.props.user.uid
+        Actions.addToList([ref, this.props.input])
     },
     render(){
         return(
@@ -17,10 +18,13 @@ export default Component({
                        value={this.props.input}
                        onChange={(event) => {Actions.setInputText(event.target.value)}}
                     />
+                <button onClick={Actions.toggleGlobalState} type="button" className={this.props.useGlobal ? "btn btn-primary" : "btn btn-default"}>Use Global</button>
             </form>
             )}
 }, (state) => {
     return  {
-        input: state.listState.textInput
+        input: state.listState.textInput,
+        user: state.listState.user,
+        useGlobal: state.listState.useGlobal
     }
 })

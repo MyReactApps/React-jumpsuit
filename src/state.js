@@ -2,9 +2,11 @@ import { State } from 'jumpsuit';
 
 const listState = State({
     initial: {
-        list: [{name: 'stuff'}],
+        list: [],
+        globalList: [],
         textInput: '',
-        user: ''
+        user: '',
+        useGlobal: false
     },
     setList({list, ...rest}, newList){
         return{
@@ -19,10 +21,22 @@ const listState = State({
             textInput: text
         }
     },
+    setGlobalList({globalList, ...rest}, newList){
+        return{
+            ...rest,
+            globalList: newList
+        }
+    },
     setUser({user, ...rest}, newUser){
         return{
             ...rest,
             user: newUser
+        }
+    },
+    toggleGlobalState({useGlobal, ...rest}){
+        return {
+            ...rest,
+            useGlobal: !useGlobal
         }
     }
 })
